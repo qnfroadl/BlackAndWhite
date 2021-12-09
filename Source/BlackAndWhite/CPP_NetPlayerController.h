@@ -15,6 +15,7 @@ class BLACKANDWHITE_API ACPP_NetPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
+	UFUNCTION(BlueprintCallable)
 	FString GetIPAddress();
 
 };

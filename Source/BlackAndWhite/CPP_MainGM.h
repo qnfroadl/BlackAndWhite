@@ -20,14 +20,7 @@ public:
 	// 이 방식이 맞는지 확인 필요.
 	void PreLogin(const FString& Options, const FString& Address, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage) override;
 
-	void BeginPlay() override;
-// 
-// 	UFUNCTION()
-// 	void PreLoginEvent(AGameModeBase* GameMode, const FUniqueNetIdRepl& NewPlayer, FString& ErrorMessage);
-
-protected:
-	
-private:
+	UPROPERTY(EditAnywhere)
 	int MaxPlayers;
 
 };

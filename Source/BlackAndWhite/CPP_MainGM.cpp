@@ -32,7 +32,7 @@ void ACPP_MainGM::PreLogin(const FString& Options, const FString& Address, const
 
 		if (this->MaxPlayers <= OutActors.Num())
 		{
-			ErrorMessage.Append(TEXT("Max Players"));
+			ErrorMessage.Append(TEXT("Server is full."));
 // 
 // 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Max Players"));
 		}
@@ -40,15 +40,3 @@ void ACPP_MainGM::PreLogin(const FString& Options, const FString& Address, const
 
 	FGameModeEvents::GameModePreLoginEvent.Broadcast(this, UniqueId, ErrorMessage);
 }
-
-void ACPP_MainGM::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// GameModePreLoginEvent.AddDynamic(this, &ACPP_MainGM::PreLoginEvent);
-}
-// 
-// void ACPP_MainGM::PreLoginEvent(AGameModeBase* GameMode, const FUniqueNetIdRepl& NewPlayer, FString& ErrorMessage)
-// {
-// 
-// }
