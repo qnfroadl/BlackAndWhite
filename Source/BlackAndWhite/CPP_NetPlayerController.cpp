@@ -8,9 +8,25 @@
 FString ACPP_NetPlayerController::GetIPAddress()
 {
 	bool bCanBindAll = false;
+	FString MyIP = TEXT("Unknown");
 
-	TSharedPtr<class FInternetAddr> Addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetLocalHostAddr(*GLog, bCanBindAll);
-	FString MyIP = Addr->ToString(false);
+	ISocketSubsystem* SocketSystem = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM);
+
+	if (SocketSystem)
+	{
+		TSharedPtr<class FInternetAddr> Addr = SocketSystem->GetLocalHostAddr(*GLog, bCanBindAll);
+		
+		MyIP = Addr->ToString(false);
+	}
+	
+	UWorld* world = GetWorld();
+	if (world)
+	{
+		MyIP = MyIP + FString(":") +  FString::FromInt(world->URL.Port);
+
+	}
+
+
 
 	return MyIP;
 	// 
