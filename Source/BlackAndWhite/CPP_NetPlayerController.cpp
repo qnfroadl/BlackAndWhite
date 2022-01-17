@@ -23,10 +23,7 @@ FString ACPP_NetPlayerController::GetIPAddress()
 	if (world)
 	{
 		MyIP = MyIP + FString(":") +  FString::FromInt(world->URL.Port);
-
 	}
-
-
 
 	return MyIP;
 	// 
